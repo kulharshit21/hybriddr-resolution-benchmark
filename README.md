@@ -56,4 +56,4 @@ Site-specific MAMAGuard stop scripts, migration helpers, cloud backup/upload wra
 
 ## Citation and licensing
 
-See `CITATION.md` for the manuscript author/title metadata. No publication DOI or acceptance is claimed. No software licence has been selected for this release; public visibility is not an additional licence grant. Dataset and pretrained-model rights are independent of repository visibility.
+See `CITATION.md` for the manuscript author/title metadata. No publication DOI or acceptance is claimed. The repository code is released under the MIT License; dataset and pretrained-model rights remain independent and are governed by their respective providers.
