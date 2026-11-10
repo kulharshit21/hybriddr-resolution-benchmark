@@ -1,0 +1,56 @@
+{
+  "version": 5,
+  "profile": "v7_448_cnn_gated_controls",
+  "paper_role": "exploratory development-only follow-up after V1 test inspection",
+  "gpu_ids": [
+    0,
+    1,
+    2,
+    3,
+    5
+  ],
+  "cpu_fraction": 0.7,
+  "ram_fraction": 0.8,
+  "workers_per_gpu": 8,
+  "threads_per_gpu": 4,
+  "audit_workers": 32,
+  "image_size": 448,
+  "cache_size": 448,
+  "vit": "vit_large_patch14_dinov2.lvd142m",
+  "cnn": "convnext_large.fb_in22k_ft_in1k",
+  "fusion_width": 256,
+  "fusion_heads": 8,
+  "pretrained": true,
+  "epochs": 30,
+  "batch_size": 16,
+  "auto_batch": true,
+  "vram_fraction": 0.85,
+  "effective_batch_size": 64,
+  "learning_rate": 2E-05,
+  "head_lr_multiplier": 5,
+  "weight_decay": 0.05,
+  "label_smoothing": 0.1,
+  "gradient_checkpointing": true,
+  "seeds": [
+    11,
+    23,
+    42,
+    67,
+    101
+  ],
+  "external_datasets": [],
+  "bootstrap_repeats": 2000,
+  "recipes": [
+    {
+      "architecture": "cnn",
+      "name": "cnn_ce_r448",
+      "loss": "ce"
+    },
+    {
+      "architecture": "gated",
+      "name": "gated_ce_r448",
+      "loss": "ce"
+    }
+  ],
+  "study_version": 3
+}

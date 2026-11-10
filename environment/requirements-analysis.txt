@@ -1,0 +1,5 @@
+matplotlib
+reportlab
+openpyxl
+
+# Install a suitable PyTorch/torchvision build separately; see README.

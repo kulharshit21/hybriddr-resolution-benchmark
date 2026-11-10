@@ -1,0 +1,28 @@
+{
+  "mode": "implement",
+  "objective": "prepare a resumable five-GPU publication campaign bound to the verified quarantine child",
+  "acceptance_criteria": [
+    "select any five stable idle physical GPUs without stopping unrelated work",
+    "preserve scientific job identity when physical GPU assignments change",
+    "run and validate a five-job one-epoch full-data pilot before research training",
+    "train the frozen 65-run Large/Large matrix",
+    "train the frozen 10-run Base/Small scale matrix",
+    "defer internal and external evaluation until both training matrices finish",
+    "record throughput, VRAM, GPU, CPU, RAM, configurations, manifests and result identities",
+    "support epoch-level restart and metadata synchronization to private Drive"
+  ],
+  "non_goals": [
+    "do not stop or preempt another user's GPU process",
+    "do not tune architecture or losses from held-out evaluation results",
+    "do not treat pilot outputs as research results",
+    "do not claim DDR evaluation or human duplicate adjudication"
+  ],
+  "risk": "high",
+  "budget": "deep",
+  "allowed_write_scope": [
+    "pipeline",
+    "FINAL_EXECUTION_PLAN.md",
+    "RESEARCH_EXECUTION_EVIDENCE_LOG.md"
+  ],
+  "verification": "full"
+}

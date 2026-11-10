@@ -1,0 +1,7 @@
+{
+  "mode": "implement",
+  "allowed_write_scope": ["pipeline", "audit", "release", "RESEARCH_REBUILD_AND_PUBLICATION_PLAN.md"],
+  "policy": {"planning": "deep", "context_depth": "dependency", "verification_depth": "full", "delegation": "none", "reason_codes": ["new-training-pipeline", "large-data-package", "cpu-gpu-verification"]},
+  "acceptance": ["CPU unit tests", "local CUDA training smoke", "resumable staged CLI", "five-device bounded scheduler", "dataset manifest and leakage protection", "verified ZIP with all current datasets", "rclone remote checksum verification"],
+  "limitations": ["DGX hardware validation occurs after transfer", "scientific results require complete training", "DDR images unavailable", "optional new research hypotheses require separate validation"]
+}

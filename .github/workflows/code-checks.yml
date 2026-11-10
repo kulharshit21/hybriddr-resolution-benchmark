@@ -1,0 +1,21 @@
+name: Code-only checks
+on: [push, pull_request]
+jobs:
+  cpu-checks:
+    runs-on: ubuntu-latest
+    env:
+      CUDA_VISIBLE_DEVICES: ""
+      OMP_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      HF_HUB_OFFLINE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/check_public_tree.py
+      - run: pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install timm numpy pandas scikit-learn scipy pillow psutil
+      - name: Synthetic CPU model and metric checks
+        working-directory: pipeline
+        run: python -m unittest test_pipeline.PipelineTests.test_all_recipes_forward_backward test_pipeline.PipelineTests.test_attention_query_key_gradients test_pipeline.PipelineTests.test_metrics_perfect test_pipeline.PipelineTests.test_grouped_splits

@@ -1,0 +1,68 @@
+{
+  "version": 3,
+  "profile": "v2_development_only",
+  "paper_role": "exploratory development screening",
+  "gpu_ids": [
+    0
+  ],
+  "cpu_fraction": 0.7,
+  "ram_fraction": 0.8,
+  "workers_per_gpu": 24,
+  "threads_per_gpu": 8,
+  "audit_workers": 32,
+  "image_size": 224,
+  "cache_size": 448,
+  "vit": "vit_large_patch14_dinov2.lvd142m",
+  "cnn": "convnext_large.fb_in22k_ft_in1k",
+  "fusion_width": 256,
+  "fusion_heads": 8,
+  "pretrained": true,
+  "epochs": 30,
+  "batch_size": 16,
+  "auto_batch": true,
+  "vram_fraction": 0.85,
+  "effective_batch_size": 64,
+  "learning_rate": 2e-05,
+  "head_lr_multiplier": 5,
+  "weight_decay": 0.05,
+  "label_smoothing": 0.1,
+  "gradient_checkpointing": true,
+  "seeds": [
+    11,
+    23
+  ],
+  "external_datasets": [
+    "MESSIDOR2"
+  ],
+  "bootstrap_repeats": 2000,
+  "recipes": [
+    {
+      "name": "gated_ce_ce",
+      "architecture": "gated",
+      "loss": "ce"
+    },
+    {
+      "name": "gated_ce_blend_uniform",
+      "architecture": "gated",
+      "loss": "blend_uniform",
+      "blend_ramp_epochs": 10,
+      "blend_max": 0.5,
+      "focal_gamma": 1.0
+    },
+    {
+      "name": "gated_ce_blend_tempered",
+      "architecture": "gated",
+      "loss": "blend_tempered",
+      "blend_ramp_epochs": 10,
+      "blend_max": 0.5,
+      "focal_gamma": 1.0
+    },
+    {
+      "name": "gated_ce_pfl",
+      "architecture": "gated",
+      "loss": "pfl"
+    }
+  ],
+  "study_version": 2,
+  "selected_architecture": "gated_ce"
+}

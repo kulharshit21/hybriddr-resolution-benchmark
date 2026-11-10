@@ -1,0 +1,51 @@
+{
+  "schema_version": 3,
+  "algorithm_version": "retinal-near-duplicate-v3",
+  "hash_bits": 256,
+  "normalized_size": 512,
+  "roi": {
+    "intensity_threshold": 8,
+    "saturation_threshold": 0.04,
+    "minimum_fraction": 0.2,
+    "maximum_fraction": 0.9,
+    "minimum_signal_p99": 0.08,
+    "minimum_contrast_p99_p01": 0.02,
+    "padding_fraction": 0.03
+  },
+  "phash": {
+    "dct_size": 64,
+    "low_frequency_size": 16,
+    "candidate_hamming_radius": 64,
+    "max_neighbors_per_image": 10,
+    "maximum_candidate_pairs": 500000,
+    "retrieval_threads": 32,
+    "retrieval_chunk_size": 8
+  },
+  "alignment": {
+    "rotations_degrees": [-3, -1, 0, 1, 3],
+    "scales": [1.0],
+    "maximum_translation_pixels": 4
+  },
+  "confirmation": {
+    "gaussian_sigma": 4.0,
+    "confirmed": {"ssim": 0.84, "ncc": 0.88, "nmae": 0.2, "vessel_dice": 0.65},
+    "borderline": {"ssim": 0.75, "ncc": 0.8, "nmae": 0.25, "vessel_dice": 0.55},
+    "ssim_sizes": [256, 512]
+  },
+  "calibration": {
+    "seed": 20261103,
+    "minimum_retrieval_recall": 0.995,
+    "minimum_confirmation_recall": 0.995,
+    "maximum_false_confirmation_upper_95": 0.001,
+    "hard_negative_pairs": 10000
+  },
+  "dino": {
+    "model": "vit_base_patch14_dinov2.lvd142m",
+    "timm_version": "1.0.29",
+    "input_size": 518,
+    "top_k": 20,
+    "minimum_cosine_candidate": 0.9,
+    "metric": "exact_float32_cosine"
+  },
+  "manual_review": {"sample_seed": 20261103}
+}

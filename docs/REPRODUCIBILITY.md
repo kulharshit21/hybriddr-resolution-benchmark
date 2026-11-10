@@ -1,0 +1,11 @@
+# Running the code on your own authorized data
+
+Start with `python pipeline/run.py --help`. Preparation expects the provider-specific directory/label layouts defined in `pipeline/data.py`; acquire these independently under their terms. The preparation output includes a manifest, exclusions and prepared metadata. File and pixel hashes bind the prepared input. Review the exclusions and available patient/examination information before training. See `validate_data_review` in `pipeline/run.py` for the required data-review schema and accepted audit binding; do not manufacture an adjudication record.
+
+For an end-to-end CPU smoke, use `python pipeline/run.py all --smoke --cpu --data /path/to/authorized/data --out /path/to/new-smoke-output --config pipeline/config.json`. Smoke runs are not research results. For full GPU training, prepare and audit the data, create the required review binding, then use the train/evaluate/report stages with a fresh output directory and explicitly assigned GPUs. The command-line help documents `--prepared-source` and physical GPU mapping.
+
+The V2/V3 development configurations, V4 classifier adaptation and final V6/V7 configurations have different scientific roles. Preserve their validation rules and label development comparisons as exploratory. Archived launchers expect the study's manifest hash and output layout; running them on a new dataset requires an explicit new-study adaptation. No original manifest, patient mapping, prediction file or result is distributed here.
+
+Evaluation code fits temperature only on calibration data. The fixed-seed examination bootstrap requires a correctly joined examination map and paired predictions, both generated locally from your own authorized inputs. A public pairing mirror is not verified cross-examination patient identity. Model- and image-specific attribution needs an explicit locally available checkpoint; qualitative maps cannot certify a clinical explanation.
+
+Never commit generated outputs. `.gitignore` excludes common data/model/result formats; `tools/check_public_tree.py` is an additional strict staged-file check. This code release does not verify the missing training-environment upgrade chronology. Original requirements and the recorded environment inventory are supplied separately rather than silently reconciled.

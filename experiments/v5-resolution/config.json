@@ -1,0 +1,50 @@
+{
+  "version": 5,
+  "profile": "v5_resolution_five_gpu_development",
+  "paper_role": "exploratory development-only follow-up after V1 test inspection",
+  "gpu_ids": [
+    0,
+    1,
+    2,
+    3,
+    5
+  ],
+  "cpu_fraction": 0.7,
+  "ram_fraction": 0.8,
+  "workers_per_gpu": 8,
+  "threads_per_gpu": 4,
+  "audit_workers": 32,
+  "image_size": 224,
+  "cache_size": 448,
+  "vit": "vit_large_patch14_dinov2.lvd142m",
+  "cnn": "convnext_large.fb_in22k_ft_in1k",
+  "fusion_width": 256,
+  "fusion_heads": 8,
+  "pretrained": true,
+  "epochs": 10,
+  "batch_size": 16,
+  "auto_batch": true,
+  "vram_fraction": 0.85,
+  "effective_batch_size": 64,
+  "learning_rate": 2e-05,
+  "head_lr_multiplier": 5,
+  "weight_decay": 0.05,
+  "label_smoothing": 0.1,
+  "gradient_checkpointing": true,
+  "seeds": [
+    11,
+    23,
+    42
+  ],
+  "external_datasets": [],
+  "bootstrap_repeats": 2000,
+  "recipes": [
+    {
+      "name": "aligned_ce",
+      "architecture": "spatial",
+      "spatial_bias": true,
+      "loss": "ce"
+    }
+  ],
+  "study_version": 3
+}

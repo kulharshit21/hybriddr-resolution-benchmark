@@ -1,0 +1,79 @@
+{
+  "version": 3,
+  "profile": "v3_targeted_loss_development",
+  "paper_role": "exploratory development-only follow-up after V1 test inspection",
+  "gpu_ids": [
+    0,
+    1,
+    2,
+    5,
+    6
+  ],
+  "cpu_fraction": 0.7,
+  "ram_fraction": 0.8,
+  "workers_per_gpu": 16,
+  "threads_per_gpu": 6,
+  "audit_workers": 32,
+  "image_size": 224,
+  "cache_size": 448,
+  "vit": "vit_large_patch14_dinov2.lvd142m",
+  "cnn": "convnext_large.fb_in22k_ft_in1k",
+  "fusion_width": 256,
+  "fusion_heads": 8,
+  "pretrained": true,
+  "epochs": 30,
+  "batch_size": 16,
+  "auto_batch": true,
+  "vram_fraction": 0.85,
+  "effective_batch_size": 64,
+  "learning_rate": 0.00002,
+  "head_lr_multiplier": 5,
+  "weight_decay": 0.05,
+  "label_smoothing": 0.1,
+  "gradient_checkpointing": true,
+  "seeds": [
+    11,
+    23
+  ],
+  "external_datasets": [],
+  "bootstrap_repeats": 2000,
+  "recipes": [
+    {
+      "architecture": "spatial",
+      "spatial_bias": true,
+      "name": "aligned_ce",
+      "loss": "ce"
+    },
+    {
+      "architecture": "spatial",
+      "spatial_bias": true,
+      "name": "aligned_original_pfl",
+      "loss": "pfl"
+    },
+    {
+      "architecture": "spatial",
+      "spatial_bias": true,
+      "name": "aligned_blend_uniform",
+      "loss": "blend_uniform",
+      "blend_ramp_epochs": 10,
+      "blend_max": 0.5,
+      "focal_gamma": 1
+    },
+    {
+      "architecture": "spatial",
+      "spatial_bias": true,
+      "name": "aligned_blend_tempered",
+      "loss": "blend_tempered",
+      "blend_ramp_epochs": 10,
+      "blend_max": 0.5,
+      "focal_gamma": 1
+    },
+    {
+      "architecture": "spatial",
+      "spatial_bias": true,
+      "name": "aligned_balanced_softmax",
+      "loss": "balanced_softmax"
+    }
+  ],
+  "study_version": 3
+}
