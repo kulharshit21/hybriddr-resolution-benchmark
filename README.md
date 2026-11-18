@@ -56,4 +56,6 @@ Site-specific MAMAGuard stop scripts, migration helpers, cloud backup/upload wra
 
 ## Citation and licensing
 
+The [checkpoint release](https://doi.org/10.57967/hf/11665) provides the 20 main resolution and architecture checkpoints plus a multipart supporting archive. The verified artifact revision is `fd77306b15558acf4f4a094c537a75ea9bac003e`. The [model card](https://huggingface.co/harshitrk07/hybriddr-resolution-benchmark) explains the files and the [supporting archive guide](https://huggingface.co/harshitrk07/hybriddr-resolution-benchmark/blob/main/supporting/README.md) explains reconstruction and checksum verification. Select the matching experiment configuration before loading a checkpoint.
+
 See `CITATION.md` for the manuscript author/title metadata. No publication DOI or acceptance is claimed. The repository code is released under the MIT License; dataset and pretrained-model rights remain independent and are governed by their respective providers.
